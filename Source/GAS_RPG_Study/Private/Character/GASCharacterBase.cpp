@@ -13,6 +13,11 @@ AGASCharacterBase::AGASCharacterBase()
 	Weapon->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 }
 
+UAbilitySystemComponent* AGASCharacterBase::GetAbilitySystemComponent() const
+{
+	return AbilitySystemComponent;
+}
+
 // Called when the game starts or when spawned
 void AGASCharacterBase::BeginPlay()
 {
