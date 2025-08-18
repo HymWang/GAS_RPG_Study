@@ -31,3 +31,11 @@ void AAuraEnemy::UnHighLightActor()
 	GetMesh()->SetRenderCustomDepth(false);
 	Weapon->SetRenderCustomDepth(false);
 }
+
+void AAuraEnemy::BeginPlay()
+{
+	Super::BeginPlay();
+
+	//对于Enemy来说，没有controller，且ASC的Owner及Avatar都是自己Character，所以初始化时就能赋值
+	AbilitySystemComponent->InitAbilityActorInfo(this,this);
+}

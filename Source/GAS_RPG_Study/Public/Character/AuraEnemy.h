@@ -17,8 +17,12 @@ class GAS_RPG_STUDY_API AAuraEnemy : public AGASCharacterBase,public IEnemyInter
 
 public:
 	AAuraEnemy();
-	
+
+	/** EnemyInterface */
 	virtual void HighLightActor() override;
 	virtual void UnHighLightActor() override;
+	/** End EnemyInterface*/
 
+protected:
+	virtual void BeginPlay() override;
 };
