@@ -4,8 +4,10 @@
 #include "Character/AuraCharacter.h"
 
 #include "AbilitySystemComponent.h"
+#include "Controller/AuraPlayerController.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "Player/AuraPlayerState.h"
+#include "UI/HUD/AuraHUD.h"
 
 AAuraCharacter::AAuraCharacter()
 {
@@ -49,4 +51,13 @@ void AAuraCharacter::InitAbilityActorInfo()
 	
 	AbilitySystemComponent = AuraState->GetAbilitySystemComponent();
 	AttributeSet = AuraState->GetAttributeSet();
+
+	//在玩家视口中添加OverlayUI（初始化UI并设置UI的Controller类）
+	if (AAuraPlayerController* AuraPlayerController = Cast<AAuraPlayerController>(GetController()))
+	{
+		if (AAuraHUD* AuraHUD = Cast<AAuraHUD>(AuraPlayerController->GetHUD()))
+		{
+			AuraHUD->InitOverlay(AuraPlayerController,AuraState,AbilitySystemComponent,AttributeSet);
+		}
+	}
 }

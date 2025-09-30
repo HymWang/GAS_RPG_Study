@@ -24,5 +24,9 @@ public:
 	virtual void OnRep_PlayerState() override;
 
 private:
+	/**
+	 * 调用玩家PlayerState中的ASC组件的InitAbilityActorInfo函数，并将PlayerState中的ASC组件以及AttributeSet赋值给父类中的ASC及AttributeSet指针。
+	 * 调用时必须确保PlayerState以及PlayerController初始化完成。
+	 */
 	void InitAbilityActorInfo();
 };
